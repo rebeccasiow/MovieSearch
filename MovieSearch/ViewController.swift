@@ -27,21 +27,28 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        log("")
         
         dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INITIATED,0)){
+            self.log("dispatch async")
             self.fetchData("http://www.omdbapi.com/?s=rebecca")
-            
             self.cacheImages()
             
             dispatch_async(dispatch_get_main_queue()){
                 self.movieCollection.reloadData()
+                
+                // need to update favourites as well
+                
                 //self.tableView.reloadData()
             }
         }
 
     }
 
+    func log(logMessage: String, functionName: String = #function) {
+        print("\(functionName): \(logMessage)")
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -49,7 +56,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        return favouritesArray.count
+        return movieList.count
     
     }
     
@@ -61,6 +68,9 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
          
          **/
         
+        movieCell.moviePoster = movieList[indexPath.row].poster
+        movieCell.movieTitle.text = movieList[indexPath.row].movieTitle
+        
         return movieCell
         
     }
@@ -69,6 +79,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         self.performSegueWithIdentifier("showInfo", sender: self)
     }
     
+    /**
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
         if segue.identifier == "showInfo" {
@@ -77,13 +88,14 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             
             let infoView = segue.destinationViewController as! MovieInfoViewController
             
-            infoView.movieImage = self.movieList[indexPath.row] as! UIImage
+            /**infoView.movieImage = self.movieList[indexPath.row] as! UIImage
             infoView.title = self.movieList[indexPath.row] as? String
+ **/
             
         }
         
         
-    }
+    }**/
     
     override func viewWillAppear(animated: Bool) {
         let savedFaves:NSUserDefaults = NSUserDefaults.standardUserDefaults()
@@ -126,17 +138,22 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         
     }
     func fetchData (fetchURL: String) {
-        let json = getJSON(fetchURL)
+        log("start")
         
-        for result in json.arrayValue {
+        let json = getJSON(fetchURL)
+        log("does get json work")
+        //print(json)
+        for result in json["Search"].arrayValue {
+            print(result)
             let title = result["Title"].stringValue
             let releasedYear = result["Year"].stringValue
             let posterURL = result["Poster"].stringValue
             let movieType = result["Type"].stringValue
             
             movieList.append(Movie(movieTitle: title, poster: posterURL, released: releasedYear, type: movieType))
-            
+            log("append to movieList")
         }
+        
         print(movieList)
         
     }
@@ -163,13 +180,17 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         //NSData
         //UIImage
         
-        for item in theData {
+        for item in movieList {
             
-            let url = NSURL(string: item.url)
-            let data = NSData(contentsOfURL: url!)
-            let image = UIImage(data: data!)
+            let posterUrl = NSURL(String: item.poster)
+            guard let data = NSData(contentsOfURL: posterUrl!) else {
+                return
+            }
+            guard let image = UIImage(data: data) else {
+                return
+            }
             
-            theImageCache.append(image!)
+            theImageCache.append(image)
             
             
         }

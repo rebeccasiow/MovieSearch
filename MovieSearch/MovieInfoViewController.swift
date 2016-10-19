@@ -12,12 +12,23 @@ class MovieInfoViewController: UIViewController {
 
     @IBOutlet weak var imageView: UIImageView!
     
-    var movieImage = UIImage()
+    @IBOutlet weak var movieTitleLabel: UILabel!
     
-    var movieTitle = ""
+    @IBOutlet weak var movieYear: UILabel!
+    
+    var movieInfo: Movie!
+    
+    //var movieImage = UIImageView()
+    
+    //var movieTitle = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        imageView.image = movieInfo.poster
+        movieTitleLabel.text = movieInfo.movieTitle
+        movie
+        
 
         // Do any additional setup after loading the view.
     }
