@@ -18,6 +18,9 @@
 		B261C0F31DB7109000BA8803 /* sample-1116-slayer-hand@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B261C0F21DB7109000BA8803 /* sample-1116-slayer-hand@2x.png */; };
 		B261C0F51DB7243500BA8803 /* MovieCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B261C0F41DB7243500BA8803 /* MovieCollectionViewCell.swift */; };
 		B261C0F71DB7245700BA8803 /* MovieInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B261C0F61DB7245700BA8803 /* MovieInfoViewController.swift */; };
+		B261C0F91DB73A3300BA8803 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = B261C0F81DB73A3300BA8803 /* Movie.swift */; };
+		B261C0FB1DB73DED00BA8803 /* No-image-found.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B261C0FA1DB73DED00BA8803 /* No-image-found.jpg */; };
+		B261C0FD1DB7400A00BA8803 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = B261C0FC1DB7400A00BA8803 /* SwiftyJSON.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +58,9 @@
 		B261C0F21DB7109000BA8803 /* sample-1116-slayer-hand@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sample-1116-slayer-hand@2x.png"; sourceTree = "<group>"; };
 		B261C0F41DB7243500BA8803 /* MovieCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieCollectionViewCell.swift; sourceTree = "<group>"; };
 		B261C0F61DB7245700BA8803 /* MovieInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieInfoViewController.swift; sourceTree = "<group>"; };
+		B261C0F81DB73A3300BA8803 /* Movie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
+		B261C0FA1DB73DED00BA8803 /* No-image-found.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "No-image-found.jpg"; sourceTree = "<group>"; };
+		B261C0FC1DB7400A00BA8803 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,8 +113,11 @@
 			children = (
 				B261C0F01DB70F7F00BA8803 /* sample-401-globe.png */,
 				B261C0F21DB7109000BA8803 /* sample-1116-slayer-hand@2x.png */,
+				B261C0FA1DB73DED00BA8803 /* No-image-found.jpg */,
 				B2069D2E1DB5B5C000122C05 /* AppDelegate.swift */,
 				B2069D301DB5B5C000122C05 /* ViewController.swift */,
+				B261C0F81DB73A3300BA8803 /* Movie.swift */,
+				B261C0FC1DB7400A00BA8803 /* SwiftyJSON.swift */,
 				B261C0F61DB7245700BA8803 /* MovieInfoViewController.swift */,
 				B261C0F41DB7243500BA8803 /* MovieCollectionViewCell.swift */,
 				B2069D321DB5B5C000122C05 /* Main.storyboard */,
@@ -244,6 +253,7 @@
 				B261C0F31DB7109000BA8803 /* sample-1116-slayer-hand@2x.png in Resources */,
 				B2069D391DB5B5C000122C05 /* LaunchScreen.storyboard in Resources */,
 				B261C0F11DB70F7F00BA8803 /* sample-401-globe.png in Resources */,
+				B261C0FB1DB73DED00BA8803 /* No-image-found.jpg in Resources */,
 				B2069D361DB5B5C000122C05 /* Assets.xcassets in Resources */,
 				B2069D341DB5B5C000122C05 /* Main.storyboard in Resources */,
 			);
@@ -273,7 +283,9 @@
 				B261C0F51DB7243500BA8803 /* MovieCollectionViewCell.swift in Sources */,
 				B2069D311DB5B5C000122C05 /* ViewController.swift in Sources */,
 				B2069D2F1DB5B5C000122C05 /* AppDelegate.swift in Sources */,
+				B261C0FD1DB7400A00BA8803 /* SwiftyJSON.swift in Sources */,
 				B261C0F71DB7245700BA8803 /* MovieInfoViewController.swift in Sources */,
+				B261C0F91DB73A3300BA8803 /* Movie.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Movie Search-->
@@ -17,23 +18,51 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="QL9-j9-LSD">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="QL9-j9-LSD">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="N1d-Ah-1f0">
                                     <size key="itemSize" width="153" height="189"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="20" minY="20" maxX="0.0" maxY="0.0"/>
+                                    <inset key="sectionInset" minX="20" minY="64" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="wyj-PG-lKz" customClass="MovieCollectionViewCell" customModule="MovieSearch" customModuleProvider="target">
-                                        <rect key="frame" x="20" y="20" width="153" height="189"/>
+                                        <rect key="frame" x="20" y="128" width="153" height="189"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="153" height="189"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="No-image-found.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="a1e-MK-1Hh">
+                                                    <rect key="frame" x="0.0" y="0.0" width="153" height="189"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hJN-mX-zRo">
+                                                    <rect key="frame" x="0.0" y="165" width="153" height="24"/>
+                                                    <color key="backgroundColor" red="0.60000002379999995" green="0.60000002379999995" blue="0.60000002379999995" alpha="0.29431573275862066" colorSpace="calibratedRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="24" id="QOQ-SM-0LW"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="hJN-mX-zRo" secondAttribute="trailing" id="JtD-Ug-NYE"/>
+                                            <constraint firstAttribute="bottom" secondItem="hJN-mX-zRo" secondAttribute="bottom" id="Mj6-36-R6w"/>
+                                            <constraint firstItem="hJN-mX-zRo" firstAttribute="leading" secondItem="a1e-MK-1Hh" secondAttribute="leading" id="Z3l-1a-5wj"/>
+                                            <constraint firstItem="a1e-MK-1Hh" firstAttribute="top" secondItem="wyj-PG-lKz" secondAttribute="top" id="dMO-RG-bRZ"/>
+                                            <constraint firstItem="hJN-mX-zRo" firstAttribute="leading" secondItem="wyj-PG-lKz" secondAttribute="leading" id="drr-La-PnL"/>
+                                            <constraint firstItem="hJN-mX-zRo" firstAttribute="trailing" secondItem="a1e-MK-1Hh" secondAttribute="trailing" id="rYV-Jh-ZI9"/>
+                                            <constraint firstAttribute="bottomMargin" secondItem="a1e-MK-1Hh" secondAttribute="bottom" constant="15" id="uqU-rV-ytw"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="moviePoster" destination="a1e-MK-1Hh" id="atm-Gw-Wfg"/>
+                                            <outlet property="movieTitle" destination="hJN-mX-zRo" id="v2a-JW-zWT"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                                 <connections>
@@ -41,10 +70,23 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="zQ0-qz-9dm"/>
                                 </connections>
                             </collectionView>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="3Lm-8e-ELy">
+                                <rect key="frame" x="0.0" y="64" width="600" height="44"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="QL9-j9-LSD" firstAttribute="leading" secondItem="3Lm-8e-ELy" secondAttribute="leading" id="09j-Vg-5bM"/>
+                            <constraint firstAttribute="trailing" secondItem="QL9-j9-LSD" secondAttribute="trailing" id="7Jm-ga-MZ2"/>
+                            <constraint firstItem="QL9-j9-LSD" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="7tM-XC-ge2"/>
+                            <constraint firstItem="3Lm-8e-ELy" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="PR0-fW-AS2"/>
+                            <constraint firstAttribute="bottom" secondItem="QL9-j9-LSD" secondAttribute="bottom" id="X2K-HS-FKa"/>
+                            <constraint firstItem="QL9-j9-LSD" firstAttribute="trailing" secondItem="3Lm-8e-ELy" secondAttribute="trailing" id="h73-EO-WFm"/>
+                            <constraint firstItem="QL9-j9-LSD" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="xs0-cl-Yb1"/>
+                        </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Movie Search" image="sample-401-globe.png" selectedImage="sample-401-globe.png" id="FHY-jo-QDd"/>
+                    <navigationItem key="navigationItem" title="Movie Search" id="OAH-DE-37a"/>
                     <connections>
                         <outlet property="movieCollection" destination="QL9-j9-LSD" id="DL8-xh-lMe"/>
                         <segue destination="Ssl-bQ-XdQ" kind="show" identifier="showInfo" id="lw6-K1-ycM"/>
@@ -52,7 +94,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="951" y="337"/>
+            <point key="canvasLocation" x="1763" y="337"/>
         </scene>
         <!--Movie Info View Controller-->
         <scene sceneID="LCS-nz-tvm">
@@ -66,11 +108,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ybH-Uf-wAa">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ybH-Uf-wAa">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="327"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="ybH-Uf-wAa" secondAttribute="trailing" id="Bge-jj-LhW"/>
+                            <constraint firstItem="ybH-Uf-wAa" firstAttribute="leading" secondItem="kSG-DY-j0X" secondAttribute="leading" id="T51-Qv-CMW"/>
+                            <constraint firstItem="PrE-9t-vdJ" firstAttribute="top" secondItem="ybH-Uf-wAa" secondAttribute="bottom" constant="224" id="a56-oI-Sgn"/>
+                            <constraint firstItem="ybH-Uf-wAa" firstAttribute="top" secondItem="kSG-DY-j0X" secondAttribute="top" id="ezu-43-MrI"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="imageView" destination="ybH-Uf-wAa" id="Jo4-M4-zX9"/>
@@ -78,7 +126,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Ge-jb-4bQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1623" y="337"/>
+            <point key="canvasLocation" x="2435" y="337"/>
         </scene>
         <!--Favourites-->
         <scene sceneID="e6a-AC-0WH">
@@ -93,11 +141,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Favourites" image="sample-1116-slayer-hand.png" selectedImage="sample-1116-slayer-hand.png" id="IXb-go-m8r"/>
+                    <navigationItem key="navigationItem" title="Favourites" id="hdn-uS-WKd"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bmG-2T-Oum" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="951" y="1191"/>
+            <point key="canvasLocation" x="1763" y="1191"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="y5h-U9-0d8">
@@ -109,16 +157,55 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="hlg-v2-VV2"/>
-                        <segue destination="HYc-AX-1ut" kind="relationship" relationship="viewControllers" id="wgf-KG-5a5"/>
+                        <segue destination="Xch-1z-MYV" kind="relationship" relationship="viewControllers" id="hlg-v2-VV2"/>
+                        <segue destination="eDo-Fi-VQr" kind="relationship" relationship="viewControllers" id="wgf-KG-5a5"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4hQ-jj-0uD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="139" y="337"/>
         </scene>
+        <!--Movie Search-->
+        <scene sceneID="2Hj-lC-KPe">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Xch-1z-MYV" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Movie Search" image="sample-401-globe.png" selectedImage="sample-401-globe.png" id="FHY-jo-QDd"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="dqe-32-9TU">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="7dT-an-mKS"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Vss-Jw-aeI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="951" y="337"/>
+        </scene>
+        <!--Favourites-->
+        <scene sceneID="dxc-ps-rwF">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="eDo-Fi-VQr" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Favourites" image="sample-1116-slayer-hand.png" selectedImage="sample-1116-slayer-hand.png" id="IXb-go-m8r"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="p14-sh-jx1">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="HYc-AX-1ut" kind="relationship" relationship="rootViewController" id="eW8-a3-wU7"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="neQ-bZ-Akt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="951" y="1191"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="No-image-found.jpg" width="275" height="275"/>
         <image name="sample-1116-slayer-hand.png" width="18" height="25"/>
         <image name="sample-401-globe.png" width="28" height="28"/>
     </resources>

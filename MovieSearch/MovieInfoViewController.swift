@@ -14,6 +14,8 @@ class MovieInfoViewController: UIViewController {
     
     var movieImage = UIImage()
     
+    var movieTitle = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
