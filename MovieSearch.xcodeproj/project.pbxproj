@@ -16,6 +16,8 @@
 		B2069D4F1DB5B5C000122C05 /* MovieSearchUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2069D4E1DB5B5C000122C05 /* MovieSearchUITests.swift */; };
 		B261C0F11DB70F7F00BA8803 /* sample-401-globe.png in Resources */ = {isa = PBXBuildFile; fileRef = B261C0F01DB70F7F00BA8803 /* sample-401-globe.png */; };
 		B261C0F31DB7109000BA8803 /* sample-1116-slayer-hand@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B261C0F21DB7109000BA8803 /* sample-1116-slayer-hand@2x.png */; };
+		B261C0F51DB7243500BA8803 /* MovieCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B261C0F41DB7243500BA8803 /* MovieCollectionViewCell.swift */; };
+		B261C0F71DB7245700BA8803 /* MovieInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B261C0F61DB7245700BA8803 /* MovieInfoViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +53,8 @@
 		B2069D501DB5B5C000122C05 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B261C0F01DB70F7F00BA8803 /* sample-401-globe.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sample-401-globe.png"; sourceTree = "<group>"; };
 		B261C0F21DB7109000BA8803 /* sample-1116-slayer-hand@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sample-1116-slayer-hand@2x.png"; sourceTree = "<group>"; };
+		B261C0F41DB7243500BA8803 /* MovieCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieCollectionViewCell.swift; sourceTree = "<group>"; };
+		B261C0F61DB7245700BA8803 /* MovieInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieInfoViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +109,8 @@
 				B261C0F21DB7109000BA8803 /* sample-1116-slayer-hand@2x.png */,
 				B2069D2E1DB5B5C000122C05 /* AppDelegate.swift */,
 				B2069D301DB5B5C000122C05 /* ViewController.swift */,
+				B261C0F61DB7245700BA8803 /* MovieInfoViewController.swift */,
+				B261C0F41DB7243500BA8803 /* MovieCollectionViewCell.swift */,
 				B2069D321DB5B5C000122C05 /* Main.storyboard */,
 				B2069D351DB5B5C000122C05 /* Assets.xcassets */,
 				B2069D371DB5B5C000122C05 /* LaunchScreen.storyboard */,
@@ -264,8 +270,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B261C0F51DB7243500BA8803 /* MovieCollectionViewCell.swift in Sources */,
 				B2069D311DB5B5C000122C05 /* ViewController.swift in Sources */,
 				B2069D2F1DB5B5C000122C05 /* AppDelegate.swift in Sources */,
+				B261C0F71DB7245700BA8803 /* MovieInfoViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
