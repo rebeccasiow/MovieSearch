@@ -33,7 +33,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="153" height="189"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="3C34D298-97FB-4FE6-A8D1-A91C6D1382A1" translatesAutoresizingMaskIntoConstraints="NO" id="a1e-MK-1Hh">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="5C7079C3-BDB2-4557-AF31-3B4CCDF69892" translatesAutoresizingMaskIntoConstraints="NO" id="a1e-MK-1Hh">
                                                     <rect key="frame" x="0.0" y="0.0" width="153" height="189"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hJN-mX-zRo">
@@ -107,23 +107,29 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ybH-Uf-wAa">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ybH-Uf-wAa">
                                 <rect key="frame" x="0.0" y="64" width="600" height="263"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Movie Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EgZ-Yz-Ikp">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Movie Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EgZ-Yz-Ikp">
                                 <rect key="frame" x="0.0" y="326" width="600" height="48"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="48" id="M4N-Ih-rcC"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Year" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tVw-Gf-jxY">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Year" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tVw-Gf-jxY">
                                 <rect key="frame" x="0.0" y="368" width="600" height="48"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iGI-OS-jAz">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iGI-OS-jAz">
                                 <rect key="frame" x="0.0" y="416" width="600" height="48"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="48" id="l8C-VF-cpZ"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -131,16 +137,27 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="iGI-OS-jAz" firstAttribute="top" secondItem="tVw-Gf-jxY" secondAttribute="bottom" id="3xi-o7-7MO"/>
+                            <constraint firstItem="EgZ-Yz-Ikp" firstAttribute="leading" secondItem="ybH-Uf-wAa" secondAttribute="leading" id="4Ng-9m-l50"/>
+                            <constraint firstItem="PrE-9t-vdJ" firstAttribute="top" secondItem="iGI-OS-jAz" secondAttribute="bottom" constant="87" id="Eao-oL-Vuo"/>
+                            <constraint firstItem="EgZ-Yz-Ikp" firstAttribute="leading" secondItem="tVw-Gf-jxY" secondAttribute="leading" id="FQw-XN-fdc"/>
                             <constraint firstItem="ybH-Uf-wAa" firstAttribute="leading" secondItem="kSG-DY-j0X" secondAttribute="leading" id="HTd-gn-Dl2"/>
+                            <constraint firstItem="iGI-OS-jAz" firstAttribute="leading" secondItem="tVw-Gf-jxY" secondAttribute="leading" id="M0i-ac-azR"/>
+                            <constraint firstItem="iGI-OS-jAz" firstAttribute="trailing" secondItem="tVw-Gf-jxY" secondAttribute="trailing" id="OBi-DT-Fz5"/>
                             <constraint firstItem="PrE-9t-vdJ" firstAttribute="top" secondItem="ybH-Uf-wAa" secondAttribute="bottom" constant="224" id="UFC-iH-QbX"/>
+                            <constraint firstItem="tVw-Gf-jxY" firstAttribute="top" secondItem="ybH-Uf-wAa" secondAttribute="bottom" constant="41" id="XZm-11-PvO"/>
+                            <constraint firstItem="EgZ-Yz-Ikp" firstAttribute="trailing" secondItem="ybH-Uf-wAa" secondAttribute="trailing" id="azy-LX-Nxh"/>
+                            <constraint firstItem="EgZ-Yz-Ikp" firstAttribute="trailing" secondItem="tVw-Gf-jxY" secondAttribute="trailing" id="dLw-Ag-W8L"/>
                             <constraint firstItem="ybH-Uf-wAa" firstAttribute="top" secondItem="F7Z-Ru-TFx" secondAttribute="bottom" id="r9f-8w-GCu"/>
                             <constraint firstAttribute="trailing" secondItem="ybH-Uf-wAa" secondAttribute="trailing" id="riY-Ds-QeN"/>
+                            <constraint firstItem="EgZ-Yz-Ikp" firstAttribute="top" secondItem="F7Z-Ru-TFx" secondAttribute="bottom" constant="262" id="yf5-an-dBl"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="imageView" destination="ybH-Uf-wAa" id="Jo4-M4-zX9"/>
                         <outlet property="movieTitleLabel" destination="EgZ-Yz-Ikp" id="IB9-82-YNX"/>
                         <outlet property="movieYear" destination="tVw-Gf-jxY" id="QrA-0f-ZTP"/>
+                        <outlet property="typeLabel" destination="iGI-OS-jAz" id="QlF-Ku-zK1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Ge-jb-4bQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -224,7 +241,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="3C34D298-97FB-4FE6-A8D1-A91C6D1382A1" width="275" height="275">
+        <image name="5C7079C3-BDB2-4557-AF31-3B4CCDF69892" width="275" height="275">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGOjtYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK0HCBEW
 GxwgISgrLjQ3VSRudWxs1AkKCwwNDg8QViRjbGFzc1xOU0ltYWdlRmxhZ3NWTlNSZXBzV05TQ29sb3KA

@@ -15,7 +15,8 @@ import UIKit
 struct Movie {
     
     var movieTitle = ""
-    var poster:UIImage!
+    var poster = ""
     var released = ""
     var type = ""
+    
 }

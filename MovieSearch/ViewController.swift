@@ -31,6 +31,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         
         dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INITIATED,0)){
             self.log("dispatch async")
+            
             self.fetchData("http://www.omdbapi.com/?s=rebecca")
             self.cacheImages()
             
@@ -67,19 +68,30 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
          Set Movie image and title of cell in collection view here.
          
          **/
-        
-        movieCell.moviePoster = movieList[indexPath.row].poster
+        movieCell.moviePoster.image = theImageCache[indexPath.row]
         movieCell.movieTitle.text = movieList[indexPath.row].movieTitle
         
         return movieCell
         
-    }
+    };
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         self.performSegueWithIdentifier("showInfo", sender: self)
+        
+        /**
+        // print("Time to show \(indexPath.row)")
+        let detailedVC = Detailed(nibName: "Detailed", bundle: nil)
+        
+        // detailedVC
+        detailedVC.name = theData[indexPath.row].name
+        detailedVC.image = theImageCache[indexPath.row]
+        
+        navigationController?.pushViewController(detailedVC, animated: true)
+ 
+ **/
     }
     
-    /**
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
         if segue.identifier == "showInfo" {
@@ -87,15 +99,15 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             let indexPath = indexPaths![0] as NSIndexPath
             
             let infoView = segue.destinationViewController as! MovieInfoViewController
-            
-            /**infoView.movieImage = self.movieList[indexPath.row] as! UIImage
-            infoView.title = self.movieList[indexPath.row] as? String
- **/
+            infoView.movieInfo = movieList[indexPath.row]
+            infoView.image = theImageCache[indexPath.row]
+            infoView.title = self.movieList[indexPath.row].movieTitle
+ 
             
         }
         
         
-    }**/
+    }
     
     override func viewWillAppear(animated: Bool) {
         let savedFaves:NSUserDefaults = NSUserDefaults.standardUserDefaults()
@@ -121,7 +133,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                 (data, response, error) -> Void in
                 
                 if error == nil{
-                    let  = JSON(data: data!)
+                    let  = JSON(data: ;;;;;;;;;;;;;;;;;;;data!)
                     let theTitle = swiftJSON["results"]["title"].arrayValue
                     
                 }
@@ -182,20 +194,21 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         
         for item in movieList {
             
-            let posterUrl = NSURL(String: item.poster)
-            guard let data = NSData(contentsOfURL: posterUrl!) else {
-                return
+            if(item.poster == "N/A"){
+                theImageCache.append(UIImage(named: "No-image-found.jpg")!)
+
             }
-            guard let image = UIImage(data: data) else {
-                return
+            else {
+                let url = NSURL(string: item.poster)
+                let data = NSData(contentsOfURL: url!)
+                let image = UIImage(data: data!)
+                
+                theImageCache.append(image!)
             }
-            
-            theImageCache.append(image)
-            
-            
         }
         
     }
+
     
     override func viewWillDisappear(animated: Bool) {
         

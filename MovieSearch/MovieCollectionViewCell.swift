@@ -18,5 +18,6 @@ class MovieCollectionViewCell: UICollectionViewCell {
     
     //var movieTitleString = ""
     
-    
+    var image: UIImage!
+    var name: String!
 }

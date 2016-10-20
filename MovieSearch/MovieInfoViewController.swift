@@ -16,20 +16,20 @@ class MovieInfoViewController: UIViewController {
     
     @IBOutlet weak var movieYear: UILabel!
     
+    @IBOutlet weak var typeLabel: UILabel!
+    
     var movieInfo: Movie!
     
-    //var movieImage = UIImageView()
-    
-    //var movieTitle = ""
-    
+    var image: UIImage!
+    var name: String!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        imageView.image = movieInfo.poster
-        movieTitleLabel.text = movieInfo.movieTitle
-        movie
-        
-
+        imageView.image = image
+        movieTitleLabel.text = name
+        movieYear.text = movieInfo.released
+        typeLabel.text = movieInfo.type
         // Do any additional setup after loading the view.
     }
 
