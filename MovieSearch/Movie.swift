@@ -18,5 +18,5 @@ struct Movie {
     var poster = ""
     var released = ""
     var type = ""
-    
+
 }

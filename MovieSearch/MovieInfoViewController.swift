@@ -21,13 +21,12 @@ class MovieInfoViewController: UIViewController {
     var movieInfo: Movie!
     
     var image: UIImage!
-    var name: String!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         imageView.image = image
-        movieTitleLabel.text = name
+        movieTitleLabel.text = movieInfo.movieTitle
         movieYear.text = movieInfo.released
         typeLabel.text = movieInfo.type
         // Do any additional setup after loading the view.

@@ -33,6 +33,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             self.log("dispatch async")
             
             self.fetchData("http://www.omdbapi.com/?s=rebecca")
+            self.log("Started")
             self.cacheImages()
             
             dispatch_async(dispatch_get_main_queue()){
@@ -64,31 +65,17 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let movieCell = collectionView.dequeueReusableCellWithReuseIdentifier("cell", forIndexPath: indexPath) as! MovieCollectionViewCell
         
-        /**
-         Set Movie image and title of cell in collection view here.
-         
-         **/
+
         movieCell.moviePoster.image = theImageCache[indexPath.row]
         movieCell.movieTitle.text = movieList[indexPath.row].movieTitle
         
         return movieCell
         
-    };
+    }
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         self.performSegueWithIdentifier("showInfo", sender: self)
         
-        /**
-        // print("Time to show \(indexPath.row)")
-        let detailedVC = Detailed(nibName: "Detailed", bundle: nil)
-        
-        // detailedVC
-        detailedVC.name = theData[indexPath.row].name
-        detailedVC.image = theImageCache[indexPath.row]
-        
-        navigationController?.pushViewController(detailedVC, animated: true)
- 
- **/
     }
     
     
@@ -99,6 +86,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             let indexPath = indexPaths![0] as NSIndexPath
             
             let infoView = segue.destinationViewController as! MovieInfoViewController
+            
             infoView.movieInfo = movieList[indexPath.row]
             infoView.image = theImageCache[indexPath.row]
             infoView.title = self.movieList[indexPath.row].movieTitle
@@ -154,19 +142,29 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         
         let json = getJSON(fetchURL)
         log("does get json work")
-        //print(json)
-        for result in json["Search"].arrayValue {
-            print(result)
-            let title = result["Title"].stringValue
-            let releasedYear = result["Year"].stringValue
-            let posterURL = result["Poster"].stringValue
-            let movieType = result["Type"].stringValue
-            
-            movieList.append(Movie(movieTitle: title, poster: posterURL, released: releasedYear, type: movieType))
-            log("append to movieList")
-        }
         
-        print(movieList)
+        
+        let resultTotal = json["totalResults"].intValue
+        let resultPages = resultTotal/10
+        
+        for resultPage in 1...resultPages {
+            let pageURL = fetchURL+"&page=\(resultPage)"
+            let pageJSON = getJSON(pageURL)
+            
+            for result in pageJSON["Search"].arrayValue {
+
+                let title = result["Title"].stringValue
+                let releasedYear = result["Year"].stringValue
+                let posterURL = result["Poster"].stringValue
+                let movieType = result["Type"].stringValue
+                
+                movieList.append(Movie(movieTitle: title, poster: posterURL, released: releasedYear, type: movieType))
+
+            }
+        }
+
+        
+        //print(movieList)
         
     }
     
@@ -195,8 +193,9 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         for item in movieList {
             
             if(item.poster == "N/A"){
-                theImageCache.append(UIImage(named: "No-image-found.jpg")!)
-
+                log("breaking here")
+                theImageCache.append(UIImage(named:"No-image-found.jpg")!)
+                log("are we getting here")
             }
             else {
                 let url = NSURL(string: item.poster)
