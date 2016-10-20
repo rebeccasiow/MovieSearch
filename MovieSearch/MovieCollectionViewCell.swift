@@ -13,7 +13,9 @@ class MovieCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var moviePoster: UIImageView!
     
     @IBOutlet weak var movieTitle: UILabel!
-        
+    
+    @IBOutlet weak var cellSpinner: UIActivityIndicatorView!
+    
     var image: UIImage!
     var name: String!
 }

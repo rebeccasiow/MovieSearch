@@ -8,24 +8,25 @@
 
 import UIKit
 
-/**
- {"Search":[{"Title":"The Grim Game","Year":"1919","imdbID":"tt0010195","Type":"movie","Poster":"http://ia.media-imdb.com/images/M/MV5BMTg3OTg0MDUwNV5BMl5BanBnXkFtZTgwMjQyNzM2MzE@._V1_SX300.jpg"},{"Title":"Jurassic Park: The Game","Year":"2011","imdbID":"tt1988671","Type":"game","Poster":"N/A"},{"Title":"Prem Kaa Game","Year":"2010","imdbID":"tt1610418","Type":"movie","Poster":"https://images-na.ssl-images-amazon.com/images/M/MV5BYmYyYWNhZmItMWE4Ny00MTcxLTlkMjAtN2QzYWVmZWVmYjJhXkEyXkFqcGdeQXVyMTExNDQ2MTI@._V1_SX300.jpg"},{"Title":"Goodbye Bruce Lee: His Last Game of Death","Year":"1975","imdbID":"tt0073061","Type":"movie","Poster":"http://ia.media-imdb.com/images/M/MV5BNDg4MDA0NjM2N15BMl5BanBnXkFtZTcwMjI1MTQyMQ@@._V1_SX300.jpg"},{"Title":"The Apple Game","Year":"1977","imdbID":"tt0074652","Type":"movie","Poster":"http://ia.media-imdb.com/images/M/MV5BNjg5MDg4ODU0OV5BMl5BanBnXkFtZTgwNjkxMDE2MTE@._V1_SX300.jpg"},{"Title":"America's Game: The Superbowl Champions","Year":"2006–2011","imdbID":"tt1213209","Type":"series","Poster":"http://ia.media-imdb.com/images/M/MV5BMTU3MjQ4ODc3Nl5BMl5BanBnXkFtZTcwOTY5MTk2MQ@@._V1_SX300.jpg"},{"Title":"The Game: Documentary","Year":"2005","imdbID":"tt0471178","Type":"movie","Poster":"http://ia.media-imdb.com/images/M/MV5BMTk4NzE4MDgyN15BMl5BanBnXkFtZTcwMjA4NDE5MQ@@._V1_SX300.jpg"},{"Title":"The Numbers Game","Year":"2013–","imdbID":"tt2803212","Type":"series","Poster":"https://images-na.ssl-images-amazon.com/images/M/MV5BMjA4Mjc4MjQ5M15BMl5BanBnXkFtZTgwODY5ODAxMzE@._V1_SX300.jpg"},{"Title":"Toy Story 3: The Video Game","Year":"2010","imdbID":"tt1623789","Type":"game","Poster":"N/A"},{"Title":"Match Game PM","Year":"1975–1981","imdbID":"tt0072541","Type":"series","Poster":"http://ia.media-imdb.com/images/M/MV5BMTg0Mzc4NzQ4OF5BMl5BanBnXkFtZTcwOTgxNTkzMQ@@._V1_SX300.jpg"}],"totalResults":"3002","Response":"True"}
- 
- **/
-
-
-class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UISearchBarDelegate {
+class SearchViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UISearchBarDelegate, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var movieCollection: UICollectionView!
     
     var movieList: [Movie] = []
     var theImageCache: [UIImage] = []
-    //for favourites
-    var tableView: UITableView!
+    var faveList: [String] = []
     
     @IBOutlet weak var searchBarItem: UISearchBar!
     
-    var favouritesArray = []
+    //@IBOutlet weak var spinner: UIActivityIndicatorView!
+    
+    @IBOutlet weak var noResults: UILabel!
+    
+
+    
+    /**
+     ViewDidLoad
+     **/
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,14 +38,16 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         
         dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INITIATED,0)){
             self.log("dispatch async")
-            
             self.fetchData("http://www.omdbapi.com/?s=rebecca")
             self.log("Started")
             self.cacheImages()
             
             dispatch_async(dispatch_get_main_queue()){
-                self.movieCollection.reloadData()
                 
+                //self.spinner.startAnimating()
+                self.movieCollection.reloadData()
+                //self.spinner.stopAnimating()
+
                 // need to update favourites as well
                 
                 //self.tableView.reloadData()
@@ -52,68 +55,95 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         }
 
     }
-
-    func log(logMessage: String, functionName: String = #function) {
-        print("\(functionName): \(logMessage)")
-    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+
+    func log(logMessage: String, functionName: String = #function) {
+        print("\(functionName): \(logMessage)")
+    }
     
-    @IBOutlet weak var noResults: UILabel!
+    
+    /**
+     Outlets:
+     - searchbar
+     **/
     
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
         
-        let alert = UIAlertController(title: "Alert", message: "Search keyword must be at least 2 characters.", preferredStyle: UIAlertControllerStyle.Alert)
-        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+        searchBar.resignFirstResponder()
         
         log("searchBar start")
         guard let searchText = searchBar.text else {
-
-            self.presentViewController(alert, animated: true, completion: nil)
+            print("search text is nil")
             return
         }
         
         if (searchText.characters.count > 2) {
-            log("searchText too short")
-            
-            fetchData("http://www.omdbapi.com/?s=\(searchText)")
-            movieCollection.reloadData()
+            log(searchText)
+            dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INITIATED,0)){
+                self.log("searching main thread")
+                self.fetchData("http://www.omdbapi.com/?s=\(searchText)")
+                self.cacheImages()
+                
+                dispatch_async(dispatch_get_main_queue()){
+                    
+                    //self.spinner.startAnimating()
+                    self.movieCollection.reloadData()
+                    //self.spinner.stopAnimating()
+                
+                }
+            }
         }
         else {
-            self.presentViewController(alert, animated: true, completion: nil)
+            noResults.hidden = false
+            log("searchText too short")
 
         }
 
     }
 
-    // Fetches API data whenever searchbar text is greater than 2 characters
-
+    
+    /**
+     collectionView:
+      - numberOfItemsInSection: set the number of sections
+      - cellForItemAtIndexPath: set the contents of collectionviewcells
+      - didSelectItemAtIndexPath
+     
+     **/
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
         return movieList.count
-    
     }
     
+    
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        
         let movieCell = collectionView.dequeueReusableCellWithReuseIdentifier("cell", forIndexPath: indexPath) as! MovieCollectionViewCell
         
-
+        movieCell.cellSpinner.hidesWhenStopped = true
+        movieCell.cellSpinner.startAnimating()
+        
         movieCell.moviePoster.image = theImageCache[indexPath.row]
         movieCell.movieTitle.text = movieList[indexPath.row].movieTitle
+        
+        movieCell.cellSpinner.stopAnimating()
         
         return movieCell
         
     }
     
+    /**
+     Setting up collectionViewCells - push MovieInfoViewController after clicking on a MovieCollectionViewCell, segue to MovieInfoViewController
+     
+      - didSelectItemAtIndexPath -> prepareForSegue
+     **/
+    
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         self.performSegueWithIdentifier("showInfo", sender: self)
-        
     }
-    
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
@@ -126,14 +156,39 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             infoView.movieInfo = movieList[indexPath.row]
             infoView.image = theImageCache[indexPath.row]
             infoView.title = self.movieList[indexPath.row].movieTitle
- 
-            
         }
-        
-        
     }
     
+    /**
+     Setting up favourites TableView in the favourites tab.
+     **/
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return faveList.count
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let faveMovie = tableView.dequeueReusableCellWithIdentifier("fave")! as UITableViewCell
+        faveMovie.textLabel?.text = faveList[indexPath.row]
+        
+        return faveMovie
+    }
+    
+    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        return true
+    }
+    
+    /**
+     LOADING AND SAVING INTO FAVOURITES TABLE
+     
+     viewWillAppear - what to load when view is loading
+         - load the saved things from the last app NSUserDefaults into the favourites array
+     viewWillDisappear - what to save when view disappears
+         - save things for next app opening into the favourites array
+     **/
+    
     override func viewWillAppear(animated: Bool) {
+
         let savedFaves:NSUserDefaults = NSUserDefaults.standardUserDefaults()
         /**
          if(savedFaves.arrayForKey("favourites") == nil){
@@ -145,52 +200,59 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         
         //if no saved favourites
         if(savedFaves.objectForKey("favourites") == nil){
-            
             //make sure to traverse through pages as well
-            
-            /**
-            let rebeccaMovies:String = "http://www.omdbapi.com/?s=rebecca"
-            let url = NSURL(string: rebeccaMovies)
-            let request = NSURLRequest(URL: url!)
-            let session = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
-            let task = session.dataTaskWithRequest (request) {
-                (data, response, error) -> Void in
-                
-                if error == nil{
-                    let  = JSON(data: ;;;;;;;;;;;;;;;;;;;data!)
-                    let theTitle = swiftJSON["results"]["title"].arrayValue
-                    
-                }
-                
-                
-            }
-            **/
             return
         }
         
         let savedPrevious = savedFaves.arrayForKey("favourites")
         
-        favouritesArray = savedPrevious!
+        //favouritesArray = savedPrevious!
         
     }
+    
+    
+    override func viewWillDisappear(animated: Bool) {
+        
+        /**
+         Save favourites for next app opening.
+         **/
+        
+        let savedFaves:NSUserDefaults = NSUserDefaults.standardUserDefaults()
+        savedFaves.setObject(faveList, forKey: "favourites")
+        savedFaves.synchronize()
+        
+    }
+
+    
+    /**
+     Fetching data from the API:
+      - fetchData(fetchURL: String):
+      - getJSON(url: String)
+      - cacheImages
+     **/
+    
     func fetchData (fetchURL: String) {
         log("start")
         
         let json = getJSON(fetchURL)
         log("does get json work")
         
+        movieList.removeAll()
+        theImageCache.removeAll()
+
+        //If no results, clear collection view and return
         if(json["Response"].stringValue == "False"){
             noResults.hidden = false
+            return
         }
         else {
             noResults.hidden = true
-            return
         }
         
         let resultTotal = json["totalResults"].intValue
-        let resultPages = resultTotal/10
+        let resultPages = resultTotal/10+1
         
-        for resultPage in 1...resultPages {
+        for resultPage in 1..<resultPages {
             let pageURL = fetchURL+"&page=\(resultPage)"
             let pageJSON = getJSON(pageURL)
             
@@ -200,7 +262,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                 let releasedYear = result["Year"].stringValue
                 let posterURL = result["Poster"].stringValue
                 let movieType = result["Type"].stringValue
-                
+
                 movieList.append(Movie(movieTitle: title, poster: posterURL, released: releasedYear, type: movieType))
 
             }
@@ -241,28 +303,19 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                 log("are we getting here")
             }
             else {
+                print("item poster:"+item.poster)
+
                 let url = NSURL(string: item.poster)
-                let data = NSData(contentsOfURL: url!)
-                let image = UIImage(data: data!)
+                guard let data = NSData(contentsOfURL: url!) else {
+                    theImageCache.append(UIImage(named:"No-image-found.jpg")!)
+                    return
+                }
+                let image = UIImage(data: data)
                 
                 theImageCache.append(image!)
             }
         }
         
     }
-
-    
-    override func viewWillDisappear(animated: Bool) {
-        
-        /**
-         Save favourites for next app opening.
-         **/
-        
-        let savedFaves:NSUserDefaults = NSUserDefaults.standardUserDefaults()
-        savedFaves.setObject(favouritesArray, forKey: "favourites")
-        savedFaves.synchronize()
-        
-    }
-    
 }
 

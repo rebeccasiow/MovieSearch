@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		B2069D2F1DB5B5C000122C05 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2069D2E1DB5B5C000122C05 /* AppDelegate.swift */; };
-		B2069D311DB5B5C000122C05 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2069D301DB5B5C000122C05 /* ViewController.swift */; };
+		B2069D311DB5B5C000122C05 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2069D301DB5B5C000122C05 /* SearchViewController.swift */; };
 		B2069D341DB5B5C000122C05 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B2069D321DB5B5C000122C05 /* Main.storyboard */; };
 		B2069D361DB5B5C000122C05 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B2069D351DB5B5C000122C05 /* Assets.xcassets */; };
 		B2069D391DB5B5C000122C05 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B2069D371DB5B5C000122C05 /* LaunchScreen.storyboard */; };
@@ -43,7 +43,7 @@
 /* Begin PBXFileReference section */
 		B2069D2B1DB5B5C000122C05 /* MovieSearch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieSearch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2069D2E1DB5B5C000122C05 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		B2069D301DB5B5C000122C05 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		B2069D301DB5B5C000122C05 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		B2069D331DB5B5C000122C05 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B2069D351DB5B5C000122C05 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B2069D381DB5B5C000122C05 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -115,14 +115,14 @@
 				B261C0F21DB7109000BA8803 /* sample-1116-slayer-hand@2x.png */,
 				B261C0FA1DB73DED00BA8803 /* No-image-found.jpg */,
 				B2069D2E1DB5B5C000122C05 /* AppDelegate.swift */,
-				B2069D301DB5B5C000122C05 /* ViewController.swift */,
+				B2069D301DB5B5C000122C05 /* SearchViewController.swift */,
 				B261C0F81DB73A3300BA8803 /* Movie.swift */,
-				B261C0FC1DB7400A00BA8803 /* SwiftyJSON.swift */,
-				B261C0F61DB7245700BA8803 /* MovieInfoViewController.swift */,
 				B261C0F41DB7243500BA8803 /* MovieCollectionViewCell.swift */,
+				B261C0F61DB7245700BA8803 /* MovieInfoViewController.swift */,
 				B2069D321DB5B5C000122C05 /* Main.storyboard */,
 				B2069D351DB5B5C000122C05 /* Assets.xcassets */,
 				B2069D371DB5B5C000122C05 /* LaunchScreen.storyboard */,
+				B261C0FC1DB7400A00BA8803 /* SwiftyJSON.swift */,
 				B2069D3A1DB5B5C000122C05 /* Info.plist */,
 			);
 			path = MovieSearch;
@@ -281,7 +281,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B261C0F51DB7243500BA8803 /* MovieCollectionViewCell.swift in Sources */,
-				B2069D311DB5B5C000122C05 /* ViewController.swift in Sources */,
+				B2069D311DB5B5C000122C05 /* SearchViewController.swift in Sources */,
 				B2069D2F1DB5B5C000122C05 /* AppDelegate.swift in Sources */,
 				B261C0FD1DB7400A00BA8803 /* SwiftyJSON.swift in Sources */,
 				B261C0F71DB7245700BA8803 /* MovieInfoViewController.swift in Sources */,
