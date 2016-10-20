@@ -14,7 +14,7 @@ import UIKit
  **/
 
 
-class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UISearchBarDelegate {
 
     @IBOutlet weak var movieCollection: UICollectionView!
     
@@ -23,10 +23,16 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     //for favourites
     var tableView: UITableView!
     
+    @IBOutlet weak var searchBarItem: UISearchBar!
+    
     var favouritesArray = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        movieCollection.delegate = self
+        movieCollection.dataSource = self
+        searchBarItem.delegate = self
+        
         log("")
         
         dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INITIATED,0)){
@@ -55,6 +61,36 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    @IBOutlet weak var noResults: UILabel!
+    
+    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+        
+        let alert = UIAlertController(title: "Alert", message: "Search keyword must be at least 2 characters.", preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+        
+        log("searchBar start")
+        guard let searchText = searchBar.text else {
+
+            self.presentViewController(alert, animated: true, completion: nil)
+            return
+        }
+        
+        if (searchText.characters.count > 2) {
+            log("searchText too short")
+            
+            fetchData("http://www.omdbapi.com/?s=\(searchText)")
+            movieCollection.reloadData()
+        }
+        else {
+            self.presentViewController(alert, animated: true, completion: nil)
+
+        }
+
+    }
+
+    // Fetches API data whenever searchbar text is greater than 2 characters
+
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
@@ -143,6 +179,13 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         let json = getJSON(fetchURL)
         log("does get json work")
         
+        if(json["Response"].stringValue == "False"){
+            noResults.hidden = false
+        }
+        else {
+            noResults.hidden = true
+            return
+        }
         
         let resultTotal = json["totalResults"].intValue
         let resultPages = resultTotal/10

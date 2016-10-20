@@ -20,12 +20,24 @@
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="QL9-j9-LSD">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="N1d-Ah-1f0">
                                     <size key="itemSize" width="172" height="208.5"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="20" minY="64" maxX="20" maxY="64"/>
                                 </collectionViewFlowLayout>
+                                <label key="backgroundView" hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="No Results Found!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="vPj-lZ-EfK">
+                                    <rect key="frame" x="0.0" y="-64" width="600" height="600"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="600" id="fyo-KS-QuW"/>
+                                        <constraint firstAttribute="height" constant="600" id="m7c-s8-pKM"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="wyj-PG-lKz" customClass="MovieCollectionViewCell" customModule="MovieSearch" customModuleProvider="target">
                                         <rect key="frame" x="20" y="128" width="172" height="208.5"/>
@@ -34,7 +46,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="172" height="208.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="633BDBC0-116B-4A6D-BC2A-553FEAE5E295" translatesAutoresizingMaskIntoConstraints="NO" id="a1e-MK-1Hh">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="B3AF4526-81A8-4B76-A34E-C1387AC8A775" translatesAutoresizingMaskIntoConstraints="NO" id="a1e-MK-1Hh">
                                                     <rect key="frame" x="0.0" y="0.0" width="172" height="208.5"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hJN-mX-zRo">
@@ -70,6 +82,9 @@
                             <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="3Lm-8e-ELy">
                                 <rect key="frame" x="0.0" y="64" width="600" height="44"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="9WE-OS-4Ca"/>
+                                </connections>
                             </searchBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -86,6 +101,8 @@
                     <navigationItem key="navigationItem" title="Movie Search" id="OAH-DE-37a"/>
                     <connections>
                         <outlet property="movieCollection" destination="QL9-j9-LSD" id="DL8-xh-lMe"/>
+                        <outlet property="noResults" destination="vPj-lZ-EfK" id="ENd-0P-lyZ"/>
+                        <outlet property="searchBarItem" destination="3Lm-8e-ELy" id="zIV-IA-qhV"/>
                         <segue destination="Ssl-bQ-XdQ" kind="show" identifier="showInfo" id="lw6-K1-ycM"/>
                     </connections>
                 </viewController>
@@ -241,7 +258,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="633BDBC0-116B-4A6D-BC2A-553FEAE5E295" width="275" height="275">
+        <image name="B3AF4526-81A8-4B76-A34E-C1387AC8A775" width="275" height="275">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGOjtYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK0HCBEW
 GxwgISgrLjQ3VSRudWxs1AkKCwwNDg8QViRjbGFzc1xOU0ltYWdlRmxhZ3NWTlNSZXBzV05TQ29sb3KA
