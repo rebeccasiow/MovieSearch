@@ -21,6 +21,10 @@
 		B261C0F91DB73A3300BA8803 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = B261C0F81DB73A3300BA8803 /* Movie.swift */; };
 		B261C0FB1DB73DED00BA8803 /* No-image-found.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B261C0FA1DB73DED00BA8803 /* No-image-found.jpg */; };
 		B261C0FD1DB7400A00BA8803 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = B261C0FC1DB7400A00BA8803 /* SwiftyJSON.swift */; };
+		B2B0AC791DB976B600DE6054 /* FavouritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B0AC781DB976B600DE6054 /* FavouritesViewController.swift */; };
+		B2B0AC7B1DB9777300DE6054 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B0AC7A1DB9777300DE6054 /* ViewController.swift */; };
+		B2B0AC7D1DB9B41F00DE6054 /* Favourites.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B0AC7C1DB9B41F00DE6054 /* Favourites.swift */; };
+		B2B0AC7F1DB9B77600DE6054 /* sample-321-like.png in Resources */ = {isa = PBXBuildFile; fileRef = B2B0AC7E1DB9B77600DE6054 /* sample-321-like.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +65,10 @@
 		B261C0F81DB73A3300BA8803 /* Movie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		B261C0FA1DB73DED00BA8803 /* No-image-found.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "No-image-found.jpg"; sourceTree = "<group>"; };
 		B261C0FC1DB7400A00BA8803 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
+		B2B0AC781DB976B600DE6054 /* FavouritesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavouritesViewController.swift; sourceTree = "<group>"; };
+		B2B0AC7A1DB9777300DE6054 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		B2B0AC7C1DB9B41F00DE6054 /* Favourites.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Favourites.swift; sourceTree = "<group>"; };
+		B2B0AC7E1DB9B77600DE6054 /* sample-321-like.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sample-321-like.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,9 +121,13 @@
 			children = (
 				B261C0F01DB70F7F00BA8803 /* sample-401-globe.png */,
 				B261C0F21DB7109000BA8803 /* sample-1116-slayer-hand@2x.png */,
+				B2B0AC7E1DB9B77600DE6054 /* sample-321-like.png */,
 				B261C0FA1DB73DED00BA8803 /* No-image-found.jpg */,
 				B2069D2E1DB5B5C000122C05 /* AppDelegate.swift */,
 				B2069D301DB5B5C000122C05 /* SearchViewController.swift */,
+				B2B0AC781DB976B600DE6054 /* FavouritesViewController.swift */,
+				B2B0AC7C1DB9B41F00DE6054 /* Favourites.swift */,
+				B2B0AC7A1DB9777300DE6054 /* ViewController.swift */,
 				B261C0F81DB73A3300BA8803 /* Movie.swift */,
 				B261C0F41DB7243500BA8803 /* MovieCollectionViewCell.swift */,
 				B261C0F61DB7245700BA8803 /* MovieInfoViewController.swift */,
@@ -256,6 +268,7 @@
 				B261C0FB1DB73DED00BA8803 /* No-image-found.jpg in Resources */,
 				B2069D361DB5B5C000122C05 /* Assets.xcassets in Resources */,
 				B2069D341DB5B5C000122C05 /* Main.storyboard in Resources */,
+				B2B0AC7F1DB9B77600DE6054 /* sample-321-like.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -285,6 +298,9 @@
 				B2069D2F1DB5B5C000122C05 /* AppDelegate.swift in Sources */,
 				B261C0FD1DB7400A00BA8803 /* SwiftyJSON.swift in Sources */,
 				B261C0F71DB7245700BA8803 /* MovieInfoViewController.swift in Sources */,
+				B2B0AC791DB976B600DE6054 /* FavouritesViewController.swift in Sources */,
+				B2B0AC7B1DB9777300DE6054 /* ViewController.swift in Sources */,
+				B2B0AC7D1DB9B41F00DE6054 /* Favourites.swift in Sources */,
 				B261C0F91DB73A3300BA8803 /* Movie.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

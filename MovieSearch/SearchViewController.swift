@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SearchViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UISearchBarDelegate, UITableViewDelegate, UITableViewDataSource {
+class SearchViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UISearchBarDelegate {
 
     @IBOutlet weak var movieCollection: UICollectionView!
     
@@ -159,25 +159,7 @@ class SearchViewController: UIViewController, UICollectionViewDelegate, UICollec
         }
     }
     
-    /**
-     Setting up favourites TableView in the favourites tab.
-     **/
-    
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return faveList.count
-    }
-    
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let faveMovie = tableView.dequeueReusableCellWithIdentifier("fave")! as UITableViewCell
-        faveMovie.textLabel?.text = faveList[indexPath.row]
-        
-        return faveMovie
-    }
-    
-    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        return true
-    }
-    
+       
     /**
      LOADING AND SAVING INTO FAVOURITES TABLE
      

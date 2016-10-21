@@ -9,7 +9,11 @@
 import UIKit
 
 class MovieInfoViewController: UIViewController {
-
+    
+    var movieInfo: Movie!
+    var image: UIImage!
+    var movieLiked: Bool = false
+    
     @IBOutlet weak var imageView: UIImageView!
     
     @IBOutlet weak var movieTitleLabel: UILabel!
@@ -18,10 +22,27 @@ class MovieInfoViewController: UIViewController {
     
     @IBOutlet weak var typeLabel: UILabel!
     
-    var movieInfo: Movie!
     
-    var image: UIImage!
+    @IBOutlet weak var likeButton: UIButton!
+    
+    //Add Movie Title to the faveList global array if not aleady in it.
+    //Remove from favourites if not liked anymore
+    @IBAction func addToFavourites(sender: UIButton) {
+        
+        movieLiked = !movieLiked
+        
+        if (movieLiked == true) && (faveList.contains(movieInfo.movieTitle)) {
+            faveList.insert(movieInfo.movieTitle)
+        }
+        else if (movieLiked == false) && (faveList.contains(movieInfo.movieTitle)) {
+            faveList.remove(movieInfo.movieTitle)
+        }
+        else{
+            
+        }
+    }
 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
