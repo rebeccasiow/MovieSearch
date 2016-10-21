@@ -27,17 +27,6 @@
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="20" minY="64" maxX="20" maxY="64"/>
                                 </collectionViewFlowLayout>
-                                <label key="backgroundView" hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="No Results Found!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="vPj-lZ-EfK">
-                                    <rect key="frame" x="0.0" y="-64" width="600" height="600"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <constraints>
-                                        <constraint firstAttribute="width" constant="600" id="fyo-KS-QuW"/>
-                                        <constraint firstAttribute="height" constant="600" id="m7c-s8-pKM"/>
-                                    </constraints>
-                                    <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="wyj-PG-lKz" customClass="MovieCollectionViewCell" customModule="MovieSearch" customModuleProvider="target">
                                         <rect key="frame" x="20" y="128" width="172" height="209"/>
@@ -46,7 +35,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="172" height="209"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="9169B6C4-A52B-4F12-B9A8-8C77BC9AFD22" translatesAutoresizingMaskIntoConstraints="NO" id="a1e-MK-1Hh">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="EB871F63-387F-4C17-8FB4-B7668CF9AD18" translatesAutoresizingMaskIntoConstraints="NO" id="a1e-MK-1Hh">
                                                     <rect key="frame" x="0.0" y="0.0" width="172" height="209"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hJN-mX-zRo">
@@ -56,9 +45,6 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="HIZ-e3-Rti">
-                                                    <rect key="frame" x="76" y="95" width="20" height="20"/>
-                                                </activityIndicatorView>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
@@ -72,7 +58,6 @@
                                             <constraint firstItem="a1e-MK-1Hh" firstAttribute="bottom" secondItem="hJN-mX-zRo" secondAttribute="bottom" id="z2g-Ty-aNi"/>
                                         </constraints>
                                         <connections>
-                                            <outlet property="cellSpinner" destination="HIZ-e3-Rti" id="gCM-GG-Shv"/>
                                             <outlet property="moviePoster" destination="a1e-MK-1Hh" id="atm-Gw-Wfg"/>
                                             <outlet property="movieTitle" destination="hJN-mX-zRo" id="v2a-JW-zWT"/>
                                         </connections>
@@ -90,15 +75,30 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="9WE-OS-4Ca"/>
                                 </connections>
                             </searchBar>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Results Found!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vPj-lZ-EfK">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Xri-2h-bCs">
+                                <rect key="frame" x="290" y="290" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="QL9-j9-LSD" firstAttribute="leading" secondItem="3Lm-8e-ELy" secondAttribute="leading" id="09j-Vg-5bM"/>
+                            <constraint firstItem="vPj-lZ-EfK" firstAttribute="trailing" secondItem="QL9-j9-LSD" secondAttribute="trailing" id="6N7-XX-mEX"/>
                             <constraint firstAttribute="trailing" secondItem="QL9-j9-LSD" secondAttribute="trailing" id="7Jm-ga-MZ2"/>
                             <constraint firstItem="QL9-j9-LSD" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="7tM-XC-ge2"/>
+                            <constraint firstItem="vPj-lZ-EfK" firstAttribute="bottom" secondItem="QL9-j9-LSD" secondAttribute="bottom" id="Fw6-ar-4jS"/>
+                            <constraint firstItem="Xri-2h-bCs" firstAttribute="centerX" secondItem="3Lm-8e-ELy" secondAttribute="centerX" id="JWs-EW-lq7"/>
                             <constraint firstItem="3Lm-8e-ELy" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="PR0-fW-AS2"/>
                             <constraint firstAttribute="bottom" secondItem="QL9-j9-LSD" secondAttribute="bottom" id="X2K-HS-FKa"/>
+                            <constraint firstItem="vPj-lZ-EfK" firstAttribute="leading" secondItem="3Lm-8e-ELy" secondAttribute="leading" id="aJ7-cl-cdn"/>
                             <constraint firstItem="QL9-j9-LSD" firstAttribute="trailing" secondItem="3Lm-8e-ELy" secondAttribute="trailing" id="h73-EO-WFm"/>
+                            <constraint firstItem="Xri-2h-bCs" firstAttribute="centerY" secondItem="QL9-j9-LSD" secondAttribute="centerY" id="mVk-OC-rTE"/>
+                            <constraint firstItem="vPj-lZ-EfK" firstAttribute="top" secondItem="QL9-j9-LSD" secondAttribute="top" id="nAR-mU-qCg"/>
                             <constraint firstItem="QL9-j9-LSD" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="xs0-cl-Yb1"/>
                         </constraints>
                     </view>
@@ -107,6 +107,7 @@
                         <outlet property="movieCollection" destination="QL9-j9-LSD" id="DL8-xh-lMe"/>
                         <outlet property="noResults" destination="vPj-lZ-EfK" id="ENd-0P-lyZ"/>
                         <outlet property="searchBarItem" destination="3Lm-8e-ELy" id="zIV-IA-qhV"/>
+                        <outlet property="spinner" destination="Xri-2h-bCs" id="KRQ-1t-fLb"/>
                         <segue destination="Ssl-bQ-XdQ" kind="show" identifier="showInfo" id="lw6-K1-ycM"/>
                     </connections>
                 </viewController>
@@ -306,7 +307,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="9169B6C4-A52B-4F12-B9A8-8C77BC9AFD22" width="275" height="275">
+        <image name="EB871F63-387F-4C17-8FB4-B7668CF9AD18" width="275" height="275">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGOjtYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK0HCBEW
 GxwgISgrLjQ3VSRudWxs1AkKCwwNDg8QViRjbGFzc1xOU0ltYWdlRmxhZ3NWTlNSZXBzV05TQ29sb3KA

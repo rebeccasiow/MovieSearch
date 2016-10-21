@@ -15,6 +15,7 @@ class SearchViewController: UIViewController, UICollectionViewDelegate, UICollec
     var movieList: [Movie] = []
     var theImageCache: [UIImage] = []
     var faveList: [String] = []
+    var searchString = ""
     
     @IBOutlet weak var searchBarItem: UISearchBar!
     
@@ -22,7 +23,7 @@ class SearchViewController: UIViewController, UICollectionViewDelegate, UICollec
     
     @IBOutlet weak var noResults: UILabel!
     
-
+    @IBOutlet weak var spinner: UIActivityIndicatorView!
     
     /**
      ViewDidLoad
@@ -33,24 +34,26 @@ class SearchViewController: UIViewController, UICollectionViewDelegate, UICollec
         movieCollection.delegate = self
         movieCollection.dataSource = self
         searchBarItem.delegate = self
-        
+        searchString = "http://www.omdbapi.com/?s=rebecca"
         log("")
         
         dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INITIATED,0)){
             self.log("dispatch async")
-            self.fetchData("http://www.omdbapi.com/?s=rebecca")
+            
+            self.fetchData(self.searchString)
             self.log("Started")
             self.cacheImages()
             
             dispatch_async(dispatch_get_main_queue()){
                 
-                //self.spinner.startAnimating()
+                //UI Loaded Here
+                self.view.addSubview(self.spinner)
+                //self.spinner.hidden = true
+                self.spinner.startAnimating()
                 self.movieCollection.reloadData()
-                //self.spinner.stopAnimating()
-
-                // need to update favourites as well
-                //FavouritesViewController
-                //self.tableView.reloadData()
+                self.spinner.stopAnimating()
+                self.spinner.hidden = true
+            
             }
         }
 
@@ -74,25 +77,33 @@ class SearchViewController: UIViewController, UICollectionViewDelegate, UICollec
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
         
         searchBar.resignFirstResponder()
-        
+        movieList.removeAll()
+        movieCollection.reloadData()
         log("searchBar start")
         guard let searchText = searchBar.text else {
             print("search text is nil")
             return
         }
+        searchString = searchText
         
         if (searchText.characters.count > 2) {
             log(searchText)
+            
             dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INITIATED,0)){
+        
+                
                 self.log("searching main thread")
-                self.fetchData("http://www.omdbapi.com/?s=\(searchText)")
-                self.cacheImages()
+                self.fetchData("http://www.omdbapi.com/?s=\(self.searchString)")
+                //self.cacheImages()
                 
                 dispatch_async(dispatch_get_main_queue()){
                     
-                    //self.spinner.startAnimating()
+                    //self.spinner.hidden = false
+                    self.spinner.startAnimating()
+                    self.view.addSubview(self.spinner)
+
                     self.movieCollection.reloadData()
-                    //self.spinner.stopAnimating()
+                    self.spinner.stopAnimating()
                 
                 }
             }
@@ -123,14 +134,9 @@ class SearchViewController: UIViewController, UICollectionViewDelegate, UICollec
         
         let movieCell = collectionView.dequeueReusableCellWithReuseIdentifier("cell", forIndexPath: indexPath) as! MovieCollectionViewCell
         
-        movieCell.cellSpinner.hidesWhenStopped = true
-        movieCell.cellSpinner.startAnimating()
-        
         movieCell.moviePoster.image = theImageCache[indexPath.row]
         movieCell.movieTitle.text = movieList[indexPath.row].movieTitle
-        
-        movieCell.cellSpinner.stopAnimating()
-        
+                
         return movieCell
         
     }
@@ -244,6 +250,34 @@ class SearchViewController: UIViewController, UICollectionViewDelegate, UICollec
                 let movieType = result["Type"].stringValue
 
                 movieList.append(Movie(movieTitle: title, poster: posterURL, released: releasedYear, type: movieType))
+                //self.cacheImage(posterURL)
+                
+                
+                
+                
+                if(posterURL == "N/A"){
+                    log("breaking here")
+                    theImageCache.append(UIImage(named:"No-image-found.jpg")!)
+                    log("are we getting here")
+                }
+                else {
+                    print("item poster:"+posterURL)
+                    
+                    let url = NSURL(string: posterURL)
+                    guard let data = NSData(contentsOfURL: url!) else {
+                        theImageCache.append(UIImage(named:"No-image-found.jpg")!)
+                        return
+                    }
+                    let image = UIImage(data: data)
+                    
+                    theImageCache.append(image!)
+                }
+
+                
+                
+                
+                
+                
 
             }
         }
