@@ -42,7 +42,6 @@ class MovieInfoViewController: UIViewController {
             likeButton.imageView?.backgroundColor = UIColor.clearColor()
             faveList.remove(movieInfo.movieTitle)
         }
-
     }
 
     
@@ -53,6 +52,7 @@ class MovieInfoViewController: UIViewController {
         movieTitleLabel.text = movieInfo.movieTitle
         movieYear.text = movieInfo.released
         typeLabel.text = movieInfo.type
+        movieLiked = false
         // Do any additional setup after loading the view.
     }
 

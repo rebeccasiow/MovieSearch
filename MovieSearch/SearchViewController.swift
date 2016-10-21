@@ -170,15 +170,9 @@ class SearchViewController: UIViewController, UICollectionViewDelegate, UICollec
      **/
     
     override func viewWillAppear(animated: Bool) {
+        //retrieving previous favourites
 
         let savedFaves:NSUserDefaults = NSUserDefaults.standardUserDefaults()
-        /**
-         if(savedFaves.arrayForKey("favourites") == nil){
-            return
-        }
-         **/
-        
-        //retrieving previous favourites
         
         //if no saved favourites
         if(savedFaves.objectForKey("favourites") == nil){
@@ -186,8 +180,12 @@ class SearchViewController: UIViewController, UICollectionViewDelegate, UICollec
             return
         }
         
-        let savedPrevious = savedFaves.arrayForKey("favourites")
-        
+        guard let savedPrevious = savedFaves.arrayForKey("favourites") else {
+            print("No Favourites")
+            return
+        }
+        let stringsPlease : [String] = savedPrevious as! [String]
+        faveList = stringsPlease
         //favouritesArray = savedPrevious!
         
     }
