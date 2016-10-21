@@ -18,10 +18,27 @@ class FavouritesViewController: UIViewController, UITableViewDelegate, UITableVi
         super.viewDidLoad()
         favouritesTableList.delegate = self
         favouritesTableList.dataSource = self
-        
-        // Do any additional setup after loading the view.
+        faveArray = Array(faveList)
+        favouritesTableList.reloadData()
+        favouritesTableList.allowsMultipleSelectionDuringEditing = false;
+
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        print("faveList")
+        print(faveList)
+        faveArray = Array(faveList)
+        print(faveArray)
+        favouritesTableList.reloadData()
     }
 
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if (editingStyle == UITableViewCellEditingStyle.Delete) {
+            faveList.remove(faveArray[indexPath.row])
+            favouritesTableList.reloadData()
+
+            }
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

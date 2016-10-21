@@ -49,7 +49,7 @@ class SearchViewController: UIViewController, UICollectionViewDelegate, UICollec
                 //self.spinner.stopAnimating()
 
                 // need to update favourites as well
-                
+                //FavouritesViewController
                 //self.tableView.reloadData()
             }
         }

@@ -46,7 +46,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="172" height="209"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="F4543DF2-1272-493B-8F51-A00B39FE22AC" translatesAutoresizingMaskIntoConstraints="NO" id="a1e-MK-1Hh">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="9169B6C4-A52B-4F12-B9A8-8C77BC9AFD22" translatesAutoresizingMaskIntoConstraints="NO" id="a1e-MK-1Hh">
                                                     <rect key="frame" x="0.0" y="0.0" width="172" height="209"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hJN-mX-zRo">
@@ -212,8 +212,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="qvs-5Z-sQQ">
-                                <rect key="frame" x="0.0" y="64" width="600" height="487"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="qvs-5Z-sQQ">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="fave" id="NhQ-BL-vhh">
@@ -232,6 +232,12 @@
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="qvs-5Z-sQQ" firstAttribute="top" secondItem="dXp-4E-5F2" secondAttribute="top" id="Meu-HP-DrQ"/>
+                            <constraint firstAttribute="trailing" secondItem="qvs-5Z-sQQ" secondAttribute="trailing" id="Rg7-Id-0S7"/>
+                            <constraint firstItem="qvs-5Z-sQQ" firstAttribute="leading" secondItem="dXp-4E-5F2" secondAttribute="leading" id="Ysu-Cr-gGt"/>
+                            <constraint firstItem="qvs-5Z-sQQ" firstAttribute="bottom" secondItem="KDG-Mq-tGZ" secondAttribute="top" id="hZH-Ce-R4o"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Favourites" id="hdn-uS-WKd"/>
                     <connections>
@@ -300,7 +306,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="F4543DF2-1272-493B-8F51-A00B39FE22AC" width="275" height="275">
+        <image name="9169B6C4-A52B-4F12-B9A8-8C77BC9AFD22" width="275" height="275">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGOjtYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK0HCBEW
 GxwgISgrLjQ3VSRudWxs1AkKCwwNDg8QViRjbGFzc1xOU0ltYWdlRmxhZ3NWTlNSZXBzV05TQ29sb3KA

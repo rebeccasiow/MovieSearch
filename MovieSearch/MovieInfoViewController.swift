@@ -28,18 +28,21 @@ class MovieInfoViewController: UIViewController {
     //Add Movie Title to the faveList global array if not aleady in it.
     //Remove from favourites if not liked anymore
     @IBAction func addToFavourites(sender: UIButton) {
+        print("add this movie")
+        
+        //likeButton.imageView?.image = likeButton.imageView?.highlightedImage
         
         movieLiked = !movieLiked
         
-        if (movieLiked == true) && (faveList.contains(movieInfo.movieTitle)) {
+        if (movieLiked == true) {
+            likeButton.imageView?.backgroundColor = UIColor.grayColor()
             faveList.insert(movieInfo.movieTitle)
         }
         else if (movieLiked == false) && (faveList.contains(movieInfo.movieTitle)) {
+            likeButton.imageView?.backgroundColor = UIColor.clearColor()
             faveList.remove(movieInfo.movieTitle)
         }
-        else{
-            
-        }
+
     }
 
     
