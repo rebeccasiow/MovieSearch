@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -35,7 +36,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="172" height="209"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="EB871F63-387F-4C17-8FB4-B7668CF9AD18" translatesAutoresizingMaskIntoConstraints="NO" id="a1e-MK-1Hh">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="23C15546-1020-4628-AC41-388EE5DBA020" translatesAutoresizingMaskIntoConstraints="NO" id="a1e-MK-1Hh">
                                                     <rect key="frame" x="0.0" y="0.0" width="172" height="209"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hJN-mX-zRo">
@@ -149,9 +150,9 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iGI-OS-jAz">
-                                <rect key="frame" x="0.0" y="503" width="600" height="48"/>
+                                <rect key="frame" x="0.0" y="503" width="299" height="48"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="48" id="ind-xf-w08"/>
+                                    <constraint firstAttribute="width" constant="299" id="722-nb-dx1"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -168,29 +169,40 @@
                                     <action selector="addToFavourites:" destination="Ssl-bQ-XdQ" eventType="touchUpInside" id="i46-2v-bH0"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="IMDB ID" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t3N-nx-GCc">
+                                <rect key="frame" x="301" y="503" width="299" height="48"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="t3N-nx-GCc" firstAttribute="leading" secondItem="iGI-OS-jAz" secondAttribute="trailing" constant="2" id="0eU-jS-74H"/>
                             <constraint firstItem="EgZ-Yz-Ikp" firstAttribute="leading" secondItem="kSG-DY-j0X" secondAttribute="leadingMargin" constant="-20" id="6AC-BK-UNU"/>
                             <constraint firstItem="PrE-9t-vdJ" firstAttribute="top" secondItem="EgZ-Yz-Ikp" secondAttribute="bottom" constant="96" id="AD4-Ow-lwS"/>
+                            <constraint firstItem="iGI-OS-jAz" firstAttribute="firstBaseline" secondItem="t3N-nx-GCc" secondAttribute="firstBaseline" id="Clr-AT-0b5"/>
                             <constraint firstItem="ybH-Uf-wAa" firstAttribute="top" secondItem="F7Z-Ru-TFx" secondAttribute="bottom" id="F1u-nB-W44"/>
-                            <constraint firstItem="PrE-9t-vdJ" firstAttribute="top" secondItem="iGI-OS-jAz" secondAttribute="bottom" id="Ft1-2L-cVt"/>
+                            <constraint firstItem="iGI-OS-jAz" firstAttribute="baseline" secondItem="t3N-nx-GCc" secondAttribute="baseline" id="Gbk-Dj-RBz"/>
                             <constraint firstItem="ybH-Uf-wAa" firstAttribute="leading" secondItem="EgZ-Yz-Ikp" secondAttribute="leading" id="MUO-U0-zmw"/>
                             <constraint firstAttribute="trailingMargin" secondItem="tVw-Gf-jxY" secondAttribute="trailing" constant="-20" id="MqO-6i-h2k"/>
                             <constraint firstItem="ybH-Uf-wAa" firstAttribute="trailing" secondItem="EgZ-Yz-Ikp" secondAttribute="trailing" id="Wef-OQ-Svy"/>
                             <constraint firstItem="EgZ-Yz-Ikp" firstAttribute="top" secondItem="ybH-Uf-wAa" secondAttribute="bottom" constant="43" id="Ysr-SA-RPB"/>
+                            <constraint firstItem="iGI-OS-jAz" firstAttribute="leading" secondItem="tVw-Gf-jxY" secondAttribute="leading" id="adI-sF-Slc"/>
                             <constraint firstItem="tVw-Gf-jxY" firstAttribute="top" secondItem="yQ6-md-BfH" secondAttribute="bottom" constant="46" id="cfz-lD-JOQ"/>
                             <constraint firstItem="PrE-9t-vdJ" firstAttribute="top" secondItem="tVw-Gf-jxY" secondAttribute="bottom" constant="48" id="fyK-VQ-985"/>
-                            <constraint firstItem="iGI-OS-jAz" firstAttribute="leading" secondItem="kSG-DY-j0X" secondAttribute="leadingMargin" constant="-20" id="j67-Ua-mRn"/>
                             <constraint firstItem="yQ6-md-BfH" firstAttribute="centerX" secondItem="EgZ-Yz-Ikp" secondAttribute="centerX" id="k9f-xW-yxz"/>
                             <constraint firstAttribute="trailingMargin" secondItem="EgZ-Yz-Ikp" secondAttribute="trailing" constant="-20" id="kLR-yK-N57"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="iGI-OS-jAz" secondAttribute="trailing" constant="-20" id="oA7-kX-iWp"/>
+                            <constraint firstItem="iGI-OS-jAz" firstAttribute="bottom" secondItem="PrE-9t-vdJ" secondAttribute="top" id="lDs-kV-iVO"/>
+                            <constraint firstItem="t3N-nx-GCc" firstAttribute="trailing" secondItem="tVw-Gf-jxY" secondAttribute="trailing" id="oxQ-dQ-aTH"/>
                             <constraint firstItem="yQ6-md-BfH" firstAttribute="top" secondItem="ybH-Uf-wAa" secondAttribute="bottom" constant="8" symbolic="YES" id="vED-2a-w7K"/>
                             <constraint firstItem="tVw-Gf-jxY" firstAttribute="leading" secondItem="kSG-DY-j0X" secondAttribute="leadingMargin" constant="-20" id="w4G-vO-F18"/>
+                            <constraint firstItem="iGI-OS-jAz" firstAttribute="top" secondItem="tVw-Gf-jxY" secondAttribute="bottom" id="yWc-Yi-RcS"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="imageView" destination="ybH-Uf-wAa" id="Jo4-M4-zX9"/>
+                        <outlet property="imdb" destination="t3N-nx-GCc" id="4jq-YX-djj"/>
                         <outlet property="likeButton" destination="yQ6-md-BfH" id="fEo-1O-ehi"/>
                         <outlet property="movieTitleLabel" destination="EgZ-Yz-Ikp" id="IB9-82-YNX"/>
                         <outlet property="movieYear" destination="tVw-Gf-jxY" id="QrA-0f-ZTP"/>
@@ -307,7 +319,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="EB871F63-387F-4C17-8FB4-B7668CF9AD18" width="275" height="275">
+        <image name="23C15546-1020-4628-AC41-388EE5DBA020" width="275" height="275">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGOjtYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK0HCBEW
 GxwgISgrLjQ3VSRudWxs1AkKCwwNDg8QViRjbGFzc1xOU0ltYWdlRmxhZ3NWTlNSZXBzV05TQ29sb3KA

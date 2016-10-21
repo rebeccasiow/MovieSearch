@@ -23,6 +23,7 @@ class MovieInfoViewController: UIViewController {
     @IBOutlet weak var typeLabel: UILabel!
     
     
+    @IBOutlet weak var imdb: UILabel!
     @IBOutlet weak var likeButton: UIButton!
     
     //Add Movie Title to the faveList global array if not aleady in it.
@@ -52,6 +53,7 @@ class MovieInfoViewController: UIViewController {
         movieTitleLabel.text = movieInfo.movieTitle
         movieYear.text = movieInfo.released
         typeLabel.text = movieInfo.type
+        imdb.text = movieInfo.imdb
         movieLiked = false
         // Do any additional setup after loading the view.
     }

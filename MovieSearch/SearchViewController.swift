@@ -248,8 +248,9 @@ class SearchViewController: UIViewController, UICollectionViewDelegate, UICollec
                 let releasedYear = result["Year"].stringValue
                 let posterURL = result["Poster"].stringValue
                 let movieType = result["Type"].stringValue
+                let imdbid = result["imdbID"].stringValue
 
-                movieList.append(Movie(movieTitle: title, poster: posterURL, released: releasedYear, type: movieType))
+                movieList.append(Movie(movieTitle: title, poster: posterURL, released: releasedYear, type: movieType, imdb: imdbid))
                 //self.cacheImage(posterURL)
                 
                 
