@@ -85,7 +85,8 @@ class MovieInfoViewController: UIViewController {
         movieLiked = !movieLiked
         
         if (movieLiked == true) {
-            likeButton.imageView?.backgroundColor = UIColor.grayColor()
+
+            likeButton.imageView?.backgroundColor = UIColor.redColor()
             faveList.insert(movieInfo.movieTitle)
         }
         else if (movieLiked == false) && (faveList.contains(movieInfo.movieTitle)) {
@@ -111,7 +112,6 @@ class MovieInfoViewController: UIViewController {
         like3.setImage(UIImage(named:"starred.png"), forState: .Highlighted)
         like4.setImage(UIImage(named:"starred.png"), forState: .Highlighted)
         like5.setImage(UIImage(named:"starred.png"), forState: .Highlighted)
-                like1.setImage(UIImage(named:"starred.png"), forState: .Highlighted)
         
     }
 

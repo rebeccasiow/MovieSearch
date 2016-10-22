@@ -37,7 +37,13 @@ class SearchViewController: UIViewController, UICollectionViewDelegate, UICollec
         searchString = "http://www.omdbapi.com/?s=rebecca"
         log("")
         
+
+        
         dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INITIATED,0)){
+            self.view.addSubview(self.spinner)
+            //self.spinner.hidden = true
+            self.spinner.startAnimating()
+            
             self.log("dispatch async")
             
             self.fetchData(self.searchString)
@@ -47,15 +53,16 @@ class SearchViewController: UIViewController, UICollectionViewDelegate, UICollec
             dispatch_async(dispatch_get_main_queue()){
                 
                 //UI Loaded Here
-                self.view.addSubview(self.spinner)
-                //self.spinner.hidden = true
-                self.spinner.startAnimating()
                 self.movieCollection.reloadData()
-                self.spinner.stopAnimating()
-                self.spinner.hidden = true
-            
+                
             }
+            
+            
         }
+        
+        self.spinner.stopAnimating()
+        self.spinner.hidden = true
+
 
     }
     
