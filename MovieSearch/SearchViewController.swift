@@ -34,10 +34,9 @@ class SearchViewController: UIViewController, UICollectionViewDelegate, UICollec
         movieCollection.delegate = self
         movieCollection.dataSource = self
         searchBarItem.delegate = self
-        searchString = "http://www.omdbapi.com/?s=rebecca"
+        //searchString = "http://www.omdbapi.com/?s=rebecca"
+        searchString = "https://doctor-bjczzz-coreysalzer.c9users.io/getUser"
         log("")
-        
-
         
         dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INITIATED,0)){
             self.view.addSubview(self.spinner)
@@ -47,6 +46,7 @@ class SearchViewController: UIViewController, UICollectionViewDelegate, UICollec
             self.log("dispatch async")
             
             self.fetchData(self.searchString)
+
             self.log("Started")
             self.cacheImages()
             
@@ -229,6 +229,7 @@ class SearchViewController: UIViewController, UICollectionViewDelegate, UICollec
         
         let json = getJSON(fetchURL)
         log("does get json work")
+        print(json)
         
         movieList.removeAll()
         theImageCache.removeAll()
@@ -260,9 +261,6 @@ class SearchViewController: UIViewController, UICollectionViewDelegate, UICollec
                 movieList.append(Movie(movieTitle: title, poster: posterURL, released: releasedYear, type: movieType, imdb: imdbid))
                 //self.cacheImage(posterURL)
                 
-                
-                
-                
                 if(posterURL == "N/A"){
                     log("breaking here")
                     theImageCache.append(UIImage(named:"No-image-found.jpg")!)
@@ -281,10 +279,7 @@ class SearchViewController: UIViewController, UICollectionViewDelegate, UICollec
                     theImageCache.append(image!)
                 }
 
-                
-                
-                
-                
+
                 
 
             }

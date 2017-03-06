@@ -37,7 +37,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="172" height="208.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BC6FE4B0-FE46-4591-989F-D9381D1B1A66" translatesAutoresizingMaskIntoConstraints="NO" id="a1e-MK-1Hh">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="07F0CFD9-E133-4E31-A2F9-4493CEFC422A" translatesAutoresizingMaskIntoConstraints="NO" id="a1e-MK-1Hh">
                                                     <rect key="frame" x="0.0" y="0.0" width="172" height="209"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hJN-mX-zRo">
@@ -469,7 +469,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="BC6FE4B0-FE46-4591-989F-D9381D1B1A66" width="275" height="275">
+        <image name="07F0CFD9-E133-4E31-A2F9-4493CEFC422A" width="275" height="275">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGOjtYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK0HCBEW
 GxwgISgrLjQ3VSRudWxs1AkKCwwNDg8QViRjbGFzc1xOU0ltYWdlRmxhZ3NWTlNSZXBzV05TQ29sb3KA
